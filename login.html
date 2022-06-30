@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Coffee with WAX!!</title>
+    <script src="https://unpkg.com/anchor-link@3"></script>
+    <script src="https://unpkg.com/anchor-link-browser-transport@3"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.js"
+        integrity="sha512-5m2r+g00HDHnhXQDbRLAfZBwPpPCaK+wPLV6lm8VQ+09ilGdHfXV7IVyKPkLOTfi4vTTUVJnz7ELs7cA87/GMA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+
+
+    <script src='waxjs.js'></script>
+    <script src="loginWCW.js"></script>
+
+
+</head>
+
+
+
+<body onload="restoreSession()">
+
+
+    <div class="d-flex bd-highlight mb-3">
+        <div class="p-2 bd-highlight">
+            <div id="login-ui">
+                <button onclick="login()">Login to Anchor Wallet</button>
+
+            </div>
+        </div>
+        <div class="p-2 bd-highlight">
+            <div id="login-ui">
+                <button id="login" onclick="loginWCW()">WCW Login</button>
+            </div>
+        </div>
+        <div class="ms-auto p-2 bd-highlight">
+            <div id="app-ui">
+
+                <button onclick="logout()">Log out</button>
+
+                <!-- <pre id="log"></pre> -->
+            </div>
+
+
+            <div id="app-ui-wcw">
+
+                <button onclick="logoutWCW()">Log out</button>
+
+                <!-- <pre id="log"></pre> -->
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="d-flex justify-content-center">
+        <p><b id="account-name"></b></p>
+    </div>
+
+    <!--<pre><code id="response">Transaction Response</code></pre>-->
+
+    <div class="d-flex justify-content-center">1 wax = $<span id="wax-price"></span></div>
+    <div class="d-flex justify-content-center">The Jittery Ape OG Blend 12oz Ground Coffee = $<span
+            id="dollar-cost"></span></div>
+    <div class="d-flex justify-content-center">The Jittery Ape OG Blend 12oz Ground Coffee = &nbsp<span
+            id="wax-cost"></span>&nbsp
+        wax</div>
+
+
+
+    <div class="d-flex bd-highlight mb-3 flex-wrap .align-content-center">
+        <div class="p-2 bd-highlight">
+            <img src="0776d3_bb75e45590bb42e296b33da3aeee67eb_mv2.webp" width="500em"/>
+        </div>
+        <div class="p-2 bd-highlight">
+            <div class="row ">
+                <div class="col-75">
+                    <div class="container ">
+                        <form action="https://sheetdb.io/api/v1/oabfnuqd1g0gv" method="post" id="sheetdb-form">
+                            <div class="row">
+                                <div class="col-50">
+                                    <h3>Address of where to ship coffee...</h3>
+                                    <label for="name"><i class="fa fa-user"></i> Full Name</label>
+                                    <input type="text" id="fname" name="data[name]" placeholder="John M. Doe">
+
+                                    <label for="waxaddress"><i class="fa fa-user"></i> wax address</label>
+                                    <input type="text" id="wax-addr" name="data[waxaddress]"
+                                        placeholder="yourwaxaddress">
+
+                                    <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                                    <input type="text" id="email" name="data[email]" placeholder="john@example.com">
+
+                                    <label for="address"><i class="fa fa-address-card-o"></i>Street Address</label>
+                                    <input type="text" id="adr" name="data[address]" placeholder="542 W. 15th Street">
+
+                                    <label for="city"><i class="fa fa-institution"></i> City</label>
+                                    <input type="text" id="city" name="data[city]" placeholder="New York">
+
+                                    <div class="row">
+                                        <div class="col-25">
+
+                                            <label for="state">State</label>
+                                            <input type="text" id="state" name="data[state]" placeholder="NY">
+
+                                        </div>
+                                        <div class="col-25">
+
+                                            <label for="zip">Zip</label>
+                                            <input type="text" id="zip" name="data[zip]" placeholder="10001">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="submit-shipping" id="ship">
+                                <input type="submit" value="Continue to checkout" class="btn" onclick=hideBtn()>
+                            </div>
+
+                        </form>
+                        <div class="pay-wax" id="pay">
+
+                            <input value="Pay wax" class="btn" id="sign" onclick=buyCoffee()>
+
+
+                            <!-- <pre><code id="response">Transaction Response </code></pre>-->
+
+                        </div>
+                        <script>
+                            var form = document.getElementById('sheetdb-form');
+                            form.addEventListener("submit", e => {
+                                e.preventDefault();
+                                fetch(form.action, {
+                                    method: "POST",
+                                    body: new FormData(document.getElementById("sheetdb-form")),
+                                }).then(response => response.json()).then((html) => {
+                                    console.log("SENT");
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>
