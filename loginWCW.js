@@ -6,6 +6,8 @@ let txID = '';
 
 let waxObj;
 
+let session;
+
 let current_price_of_wax = 0;
 
 let current_price_of_coffee = 0;
@@ -79,10 +81,13 @@ async function loginWCW() {
 }
 
 function logoutWCW() {
-
+    console.log("LOGOUT WCW");
+    
     document.body.classList.remove('logged-in-wcw');
+
+    //session.remove();
+    //location.reload()
     document.location.reload();
-    session.remove();
 }
 
 async function transferWaxWCW() {
@@ -268,7 +273,7 @@ const link = new AnchorLink({
     }]
 });
 // the session instance, either restored using link.restoreSession() or created with link.login()
-let session;
+let sessionA;
 
 let loginObj;
 
@@ -279,8 +284,8 @@ let anchorLogin = false;
 // tries to restore session, called when document is loaded
 function restoreSession() {
     link.restoreSession(identifier).then((result) => {
-        session = result;
-        if (session) {
+        sessionA = result;
+        if (sessionA) {
             didLogin();
         }
     })
@@ -291,7 +296,7 @@ function login() {
 
     link.login(identifier).then((result) => {
 
-        session = result.session;
+        sessionA = result.session;
         didLogin();
     })
 }
@@ -299,19 +304,23 @@ function login() {
 // logout and remove session from storage
 function logout() {
     document.body.classList.remove('logged-in');
-
-    session.remove();
     document.location.reload();
+    sessionA.remove();
+  
 }
 
 // called when session was restored or created
 function didLogin() {
 
-    document.getElementById('account-name').textContent = session.auth.actor;
+
+    document.getElementById('account-name').textContent = sessionA.auth.actor;
+
+
     document.body.classList.add('logged-in');
+    document.body.classList.remove('app-ui');
     document.body.classList.remove('logged-in-wcw');
 
-    const loginJson = JSON.stringify(session, getCircularReplacer());
+    const loginJson = JSON.stringify(sessionA, getCircularReplacer());
     loginObj = JSON.parse(loginJson);
 
     console.log(loginObj);
@@ -324,7 +333,7 @@ function didLogin() {
 
     console.log(linkObj);
 
-    waxUser = session.auth.actor;
+    waxUser = sessionA.auth.actor;
 
     anchorLogin = true;
 
