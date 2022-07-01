@@ -17,7 +17,7 @@ let total_sent;
 
 
 //automatically check for credentials
-autoLogin();
+//autoLogin();
 
 
 checkPriceofwax();
@@ -55,17 +55,12 @@ async function loginWCW() {
 
         await wax.login(identifier).then((result) => {
             console.log("--------" + result);
-     
+
             document.body.classList.add('logged-in');
             document.body.classList.remove('logged-in-wcw');
 
-           // document.getElementById('wax-addr').textContent = result;
+            // document.getElementById('wax-addr').textContent = result;
             document.getElementById('account-name').textContent = userAccount;
-
-         
-
-
-            
 
             session = wax;
 
@@ -88,8 +83,9 @@ async function loginWCW() {
 
 function logoutWCW() {
     console.log("LOGOUT WCW");
-    
+
     document.body.classList.remove('logged-in-wcw');
+
 
     //session.remove();
     //location.reload()
@@ -103,12 +99,16 @@ async function transferWaxWCW() {
     try {
 
         //let resultTrans;
-        let text = document.getElementById('wax-cost').textContent;
-        let texttemp = Number(text).toFixed(8);
-        let text1 = texttemp.toString();
-         let text2 = "WAX";
-        let total_sent = text1.concat(" ", text2);
+        //let text = document.getElementById('wax-cost').textContent;
+        //let texttemp = Number(text).toFixed(8);
+        console.log("TOTAL SENT--->"+total_sent);
+        //let texttemp = total_sent.toFixed(8);
+        //console.log(texttemp);
+       //let text1 = total_sent.toString();
+       let text2 = "WAX";
+       let send_amount = total_sent.concat(" ", text2);
        
+
 
         if (anchorLogin) {
             const resultTrans = await link.transact({
@@ -122,7 +122,7 @@ async function transferWaxWCW() {
                     data: {
                         from: waxUser,
                         to: 'd.2b4.wam',
-                        quantity: total_sent,
+                        quantity: send_amount,
                         memo: 'Thanks for the coffee!'
                     },
                 }]
@@ -134,7 +134,7 @@ async function transferWaxWCW() {
             txID = resultTrans.payload.tx;
 
             const resultsJson = JSON.stringify(resultTrans, getCircularReplacer());
-      
+
             console.log('RESULTS -----> ' + resultsJson);
 
             txID = resultTrans.payload.tx;
@@ -158,7 +158,7 @@ async function transferWaxWCW() {
                     data: {
                         from: waxUser,
                         to: 'd.2b4.wam',
-                        quantity: total_sent,
+                        quantity: send_amount,
                         memo: 'Thanks for the coffee!'
                     },
                 }]
@@ -184,7 +184,7 @@ async function transferWaxWCW() {
 
 
     return txID;
-  
+
 }
 
 function hideBtn() {
@@ -207,22 +207,21 @@ async function checkBalance(wam) {
 
 
     await fetchBalance(wam).then(balance_info => {
-        console.log("INFO--->"+JSON.stringify(balance_info.balances));
+        console.log("INFO--->" + JSON.stringify(balance_info.balances));
 
         const balanceJson = JSON.stringify(balance_info.balances);
 
         balanceObj = JSON.parse(balanceJson);
-        const result = balanceObj.find( ({ currency }) => currency === 'WAX' );
+        const result = balanceObj.find(({
+            currency
+        }) => currency === 'WAX');
         console.log(result.amount);
-
-     
-        console.log("INFO--->"+JSON.stringify(result.amount));
 
         let balance = Number(result.amount).toFixed(2).toString();
 
         document.getElementById('user-balance').textContent = balance;
         document.getElementById("wax-balance").style.display = "block";
-    //document.getElementById("ship").style.display = "none";
+        //document.getElementById("ship").style.display = "none";
 
         return balance;
     });
@@ -264,7 +263,7 @@ async function fetchWaxPrice() {
 async function checkPriceofwax() {
 
 
-   await fetchWaxPrice().then(price => {
+    await fetchWaxPrice().then(price => {
 
         let current_price_of_wax = price.wax.usd;
         console.log(current_price_of_wax);
@@ -274,6 +273,7 @@ async function checkPriceofwax() {
         document.getElementById('wax-cost').textContent = (0.01 / current_price_of_wax).toFixed(2);
 
         let current_price_of_coffee = (18.95 / current_price_of_wax).toFixed(8);
+        total_sent=current_price_of_coffee;
         console.log(current_price_of_coffee);
 
         return current_price_of_coffee;
@@ -333,7 +333,7 @@ function logout() {
     document.body.classList.remove('logged-in');
     document.location.reload();
     sessionA.remove();
-  
+
 }
 
 // called when session was restored or created
@@ -342,7 +342,7 @@ function didLogin() {
 
     document.getElementById('account-name').textContent = sessionA.auth.actor;
 
-    checkBalance(sessionA.auth.actor); 
+    checkBalance(sessionA.auth.actor);
 
 
     document.body.classList.add('logged-in');
