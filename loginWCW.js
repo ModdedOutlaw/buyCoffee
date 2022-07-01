@@ -266,14 +266,19 @@ async function checkPriceofwax() {
     await fetchWaxPrice().then(price => {
 
         let current_price_of_wax = price.wax.usd;
+        let current_price_of_coffee = (18.95 / current_price_of_wax).toFixed(8);
+
+        total_sent=current_price_of_coffee;
+
+
         console.log(current_price_of_wax);
 
         document.getElementById('wax-price').textContent = current_price_of_wax;
-        document.getElementById('dollar-cost').textContent = 0.01;
-        document.getElementById('wax-cost').textContent = (0.01 / current_price_of_wax).toFixed(2);
+        document.getElementById('dollar-cost').textContent = 18.95;
+        document.getElementById('wax-cost').textContent = (18.95 / current_price_of_wax).toFixed(2);
 
-        let current_price_of_coffee = (18.95 / current_price_of_wax).toFixed(8);
-        total_sent=current_price_of_coffee;
+       
+        
         console.log(current_price_of_coffee);
 
         return current_price_of_coffee;
