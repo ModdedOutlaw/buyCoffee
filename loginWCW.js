@@ -207,8 +207,18 @@ async function checkBalance(wam) {
 
 
     await fetchBalance(wam).then(balance_info => {
+        console.log("INFO--->"+JSON.stringify(balance_info.balances));
 
-        let balance = Number(balance_info.balances[0].amount).toFixed(2).toString();
+        const balanceJson = JSON.stringify(balance_info.balances);
+
+        balanceObj = JSON.parse(balanceJson);
+        const result = balanceObj.find( ({ currency }) => currency === 'WAX' );
+        console.log(result.amount);
+
+     
+        console.log("INFO--->"+JSON.stringify(result.amount));
+
+        let balance = Number(result.amount).toFixed(2).toString();
 
         document.getElementById('user-balance').textContent = balance;
         document.getElementById("wax-balance").style.display = "block";
