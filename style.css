@@ -185,3 +185,7 @@ span.price {
     margin-bottom: 20px;
   }
 }
+
+#sheetdb-form{
+  display:none;
+}
