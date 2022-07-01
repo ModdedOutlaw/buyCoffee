@@ -38,21 +38,21 @@
 
     <div class="d-flex bd-highlight mb-3">
         <div class="p-2 bd-highlight justify-content-center">
-            <div id="login-ui" >
+            <div id="login-ui">
                 <button onclick="login()" class="CustomButton w-100   btn btn-primary" id="loginAnchor">
-                <img src="anchor.png" class="center-img" height="20em"id="anchor-logo" /> LOGIN&nbsp;
-            </button>  
+                    <img src="anchor.png" class="center-img" height="20em" id="anchor-logo" /> LOGIN&nbsp;
+                </button>
             </div>
         </div>
         <div class="p-2 bd-highlight justify-content-center">
             <div id="login-ui">
-                <button id="login" class="CustomButton w-100   btn btn-primary" onclick="loginWCW()"> 
+                <button id="login" class="CustomButton w-100   btn btn-primary" onclick="loginWCW()">
 
-        
-                        <img src="wcw.png" class="center-img" width="50em" id="wax-logo"/> LOGIN&nbsp;
-                      
-                      
-                
+
+                    <img src="wcw.png" class="center-img" width="50em" id="wax-logo" /> LOGIN&nbsp;
+
+
+
                 </button>
             </div>
         </div>
@@ -60,7 +60,7 @@
         <div class="ms-auto p-2 bd-highlight" id="logout-section">
             <div id="app-ui">
 
-                <button onclick="logout()"class="btn">Log out</button>
+                <button onclick="logout()" class="btn">Log out</button>
 
                 <!-- <pre id="log"></pre> -->
             </div>
@@ -78,111 +78,113 @@
 
 
     <div class="d-flex justify-content-center">
-        <p><img src="waxcoin.png" width="30px"/><b id="account-name"></b></p>
+        <p><img src="waxcoin.png" width="30px" /><b id="account-name"></b></p>
     </div>
 
     <!--<pre><code id="response">Transaction Response</code></pre>-->
-
-    <div class="d-flex justify-content-center">1 wax = $<span id="wax-price"></span></div>
-    <div class="d-flex justify-content-center">The Jittery Ape OG Blend 12oz Ground Coffee = $<span
-            id="dollar-cost"></span></div>
-    <div class="d-flex justify-content-center">The Jittery Ape OG Blend 12oz Ground Coffee = &nbsp<span
-            id="wax-cost"></span>&nbsp
-        wax</div>
-
+    <div class="container-sm">
+        <div class="d-flex justify-content-center ">1 wax = $<span id="wax-price"></span></div>
+        <div class="d-flex justify-content-center">The Jittery Ape OG Blend 12oz Ground Coffee = $<span
+                id="dollar-cost"></span></div>
+        <div class="d-flex justify-content-center">The Jittery Ape OG Blend 12oz Ground Coffee = &nbsp<span
+                id="wax-cost"></span>&nbsp
+            wax</div>
+    </div>
 
     <div class="d-flex flex-md-nowrap flex-wrap justify-content-center">
         <div class="flex-shrink-0">
 
-            <img src="0776d3_bb75e45590bb42e296b33da3aeee67eb_mv2.webp" width="250em"/>
-           
+            <img src="0776d3_bb75e45590bb42e296b33da3aeee67eb_mv2.webp" width="250em" /><br>
+            <div class="pay-wax" id="pay">
+
+                <input value="Pay wax" class="CustomButton w-100 btn btn-primary" id="sign" onclick=buyCoffee()>
+    
+    
+                <!-- <pre><code id="response">Transaction Response </code></pre>-->
+    
+            </div>
+    
+
         </div>
-        <div class="pay-wax" id="pay">
-
-            <input value="Pay wax" class="CustomButton w-100 btn btn-primary" id="sign" onclick=buyCoffee()>
 
 
-            <!-- <pre><code id="response">Transaction Response </code></pre>-->
-
-        </div>
-
-        
         <div class="flex-grow-1 ms-3" id="shipping-form">
             <div class="p-2 bd-highlight">
-               
-                    <div class="col-75">
-                        <div class="container">
-                            <form action="https://sheetdb.io/api/v1/oabfnuqd1g0gv" method="post" id="sheetdb-form" onsubmit="hideBtn()">
-                                <div class="row">
-                                    <div class="col-50">
-                                        <h3>Address of where to ship coffee...</h3>
-                                        <label for="name"><i class="fa fa-user"></i> Full Name</label>
-                                        <input type="text" id="fname" name="data[name]" placeholder="John M. Doe" required>
 
-                                        <label for="waxaddress"><i class="fa fa-user"></i> wax address</label>
-                                        <input type="text" id="wax-addr" name="data[waxaddress]"
-                                            placeholder="yourwaxaddress" required>
+                <div class="col-75">
+                    <div class="container">
+                        <form action="https://sheetdb.io/api/v1/oabfnuqd1g0gv" method="post" id="sheetdb-form"
+                            onsubmit="hideBtn()">
+                            <div class="row">
+                                <div class="col-50">
+                                    <h3>Address of where to ship coffee...</h3>
+                                    <label for="name"><i class="fa fa-user"></i> Full Name</label>
+                                    <input type="text" id="fname" name="data[name]" placeholder="John M. Doe" required>
 
-                                        <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                                        <input type="text" id="email" name="data[email]" placeholder="john@example.com" required>
+                                    <label for="waxaddress"><i class="fa fa-user"></i> wax address</label>
+                                    <input type="text" id="wax-addr" name="data[waxaddress]"
+                                        placeholder="yourwaxaddress" required>
 
-                                        <label for="address"><i class="fa fa-address-card-o"></i>Street Address</label>
-                                        <input type="text" id="adr" name="data[address]"
-                                            placeholder="542 W. 15th Street">
+                                    <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                                    <input type="text" id="email" name="data[email]" placeholder="john@example.com"
+                                        required>
 
-                                        <label for="city"><i class="fa fa-institution"></i> City</label>
-                                        <input type="text" id="city" name="data[city]" placeholder="New York" required>
+                                    <label for="address"><i class="fa fa-address-card-o"></i>Street Address</label>
+                                    <input type="text" id="adr" name="data[address]" placeholder="542 W. 15th Street">
 
-                                        <div class="row">
-                                            <div class="col-25">
+                                    <label for="city"><i class="fa fa-institution"></i> City</label>
+                                    <input type="text" id="city" name="data[city]" placeholder="New York" required>
 
-                                                <label for="state">State</label>
-                                                <input type="text" id="state" name="data[state]" placeholder="NY" required>
+                                    <div class="row">
+                                        <div class="col-25">
 
-                                            </div>
-                                            <div class="col-25">
+                                            <label for="state">State</label>
+                                            <input type="text" id="state" name="data[state]" placeholder="NY" required>
 
-                                                <label for="zip">Zip</label>
-                                                <input type="text" id="zip" name="data[zip]" placeholder="10001"required>
+                                        </div>
+                                        <div class="col-25">
 
-                                            </div>
+                                            <label for="zip">Zip</label>
+                                            <input type="text" id="zip" name="data[zip]" placeholder="10001" required>
+
                                         </div>
                                     </div>
-                                    <div class="submit-shipping" id="ship">
-                                        <input type="submit" value="Continue to checkout" class="btn" id="shipBtn" >
+                                </div>
+                                <div class="submit-shipping" id="ship">
+                                    <input type="submit" value="Continue to checkout" class="btn" id="shipBtn">
 
-
-                                    </div>
 
                                 </div>
-                               
 
-                            </form>
-                            
-                            <script>
-                                var form = document.getElementById('sheetdb-form');
-                                form.addEventListener("submit", e => {
-                                    e.preventDefault();
-                                    fetch(form.action, {
-                                        method: "POST",
-                                        body: new FormData(document.getElementById("sheetdb-form")),
-                                    }).then(response => response.json()).then((html) => {
-                                        console.log("SENT");
-                                    });
+                            </div>
+
+
+                        </form>
+
+                        <script>
+                            var form = document.getElementById('sheetdb-form');
+                            form.addEventListener("submit", e => {
+                                e.preventDefault();
+                                fetch(form.action, {
+                                    method: "POST",
+                                    body: new FormData(document.getElementById("sheetdb-form")),
+                                }).then(response => response.json()).then((html) => {
+                                    console.log("SENT");
                                 });
-                            </script>
-                        </div>
+                            });
+                        </script>
                     </div>
+                </div>
 
 
 
-                    
 
 
-               
+
+
             </div>
         </div>
-        
+
     </div>
 
 </body>
