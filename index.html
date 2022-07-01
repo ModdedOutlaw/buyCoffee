@@ -36,57 +36,70 @@
 <body>
 
 
-    <div class="d-flex flex-column bd-highlight mb-3">
-        <div class="p-2 bd-highlight">
-            <div id="login-ui">
-                <button onclick="login()" class="CustomButton w-100   btn btn-primary" id="loginAnchor">
-                    <img src="anchor.png" class="center-img" height="20em" id="anchor-logo" /> LOGIN&nbsp;
-                </button>
+    <div class="d-flex bd-highlight mb-3">
+        <div class="me-auto p-2 bd-highlight">
+
+            <div class="d-flex flex-column bd-highlight mb-3">
+                <div class="p-2 bd-highlight me-auto">
+                    <div id="login-ui">
+                        <button onclick="login()" class="CustomButton w-100   btn btn-primary" id="loginAnchor">
+                            <img src="anchor.png" class="center-img" height="20em" id="anchor-logo" /> LOGIN&nbsp;
+                        </button>
+                    </div>
+                </div>
+        
+                <div class="p-2 bd-highlight me-auto">
+                    <div id="login-ui">
+                        <button id="login" class="CustomButton w-100   btn btn-primary" onclick="loginWCW()">
+                            <img src="wcw.png" class="center-img" width="50em" id="wax-logo" /> LOGIN
+                        </button>
+                    </div>
+                </div>
             </div>
+        
+
         </div>
-        <div class="p-2 bd-highlight" id="wax-coin">
+       
+
+        <div class="p-2 bd-highlight " id="wax-coin">
             <div class="d-flex justify-content-center align-items-center">
                 <img src="waxcoin.png" width="20px" />&nbsp;<b id="account-name"></b>
-               
+
             </div>
             <div class="d-flex justify-content-center align-items-center">
-                <div class="d-flex justify-content-center align-items-center">1 wax = $<span id="wax-price"></span></div>
-               
+                <div class="d-flex justify-content-center align-items-center">1 wax = $<span id="wax-price"></span>
+                </div>
+
             </div>
-            
+
             <div class="d-flex justify-content-center align-items-center">
                 <b id="wax-balance">Wax Balance:&nbsp;</b><b id="user-balance"></b>
             </div>
+        </div>
 
+        <div class="p-2 bd-highlight">
             
 
-        </div>
-        <div class="p-2 bd-highlight">
-            <div id="login-ui">
-                <button id="login" class="CustomButton w-100   btn btn-primary" onclick="loginWCW()">
-                    <img src="wcw.png" class="center-img" width="50em" id="wax-logo" /> LOGIN
-                </button>
+            <div class="ms-auto p-2 bd-highlight" id="logout-section">
+                <div id="app-ui">
+    
+                    <button onclick="logout()" class="btn">Log out</button>
+    
+                    <!-- <pre id="log"></pre> -->
+                </div>
+    
+    
+                <div id="app-ui-wcw">
+    
+                    <button onclick="logoutWCW()" class="btn">Log out</button>
+    
+                    <!-- <pre id="log"></pre> -->
+                </div>
             </div>
+
         </div>
+      </div>
 
-
-        <div class="ms-auto p-2 bd-highlight" id="logout-section">
-            <div id="app-ui">
-
-                <button onclick="logout()" class="btn">Log out</button>
-
-                <!-- <pre id="log"></pre> -->
-            </div>
-
-
-            <div id="app-ui-wcw">
-
-                <button onclick="logoutWCW()" class="btn">Log out</button>
-
-                <!-- <pre id="log"></pre> -->
-            </div>
-        </div>
-    </div>
 
 
 
