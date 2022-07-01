@@ -146,7 +146,7 @@ async function transferWaxWCW() {
             if (resultTrans.processed.receipt.status == 'executed') {
                 document.getElementById("pay").style.display = "none";
                 document.getElementById("ship").style.display = "block";
-                document.getElementById("sheetdb-form").style.display = "block";
+                document.getElementById("shipping-form").style.display = "block";
             }
 
 
@@ -188,7 +188,7 @@ async function transferWaxWCW() {
             if (resultTrans.processed.receipt.status == 'executed') {
                 document.getElementById("pay").style.display = "none";
                 document.getElementById("ship").style.display = "block";
-                document.getElementById("sheetdb-form").style.display = "block";
+                document.getElementById("shipping-form").style.display = "block";
             }
         }
 
