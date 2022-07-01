@@ -60,7 +60,7 @@
         <div class="ms-auto p-2 bd-highlight" id="logout-section">
             <div id="app-ui">
 
-                <button onclick="logout()">Log out</button>
+                <button onclick="logout()"class="btn">Log out</button>
 
                 <!-- <pre id="log"></pre> -->
             </div>
@@ -68,7 +68,7 @@
 
             <div id="app-ui-wcw">
 
-                <button onclick="logoutWCW()">Log out</button>
+                <button onclick="logoutWCW()" class="btn">Log out</button>
 
                 <!-- <pre id="log"></pre> -->
             </div>
@@ -95,24 +95,24 @@
         <div class="flex-shrink-0">
 
             <img src="0776d3_bb75e45590bb42e296b33da3aeee67eb_mv2.webp" width="250em"/>
-            <div class="pay-wax" id="pay">
+           
+        </div>
+        <div class="pay-wax" id="pay">
 
-                <input value="Pay wax" class="CustomButton w-100 btn btn-primary" id="sign" onclick=buyCoffee()>
-    
-    
-                <!-- <pre><code id="response">Transaction Response </code></pre>-->
-    
-            </div>
+            <input value="Pay wax" class="CustomButton w-100 btn btn-primary" id="sign" onclick=buyCoffee()>
+
+
+            <!-- <pre><code id="response">Transaction Response </code></pre>-->
 
         </div>
-     
+
         
         <div class="flex-grow-1 ms-3" id="shipping-form">
             <div class="p-2 bd-highlight">
                
                     <div class="col-75">
                         <div class="container">
-                            <form action="https://sheetdb.io/api/v1/oabfnuqd1g0gv" method="post" id="sheetdb-form">
+                            <form action="https://sheetdb.io/api/v1/oabfnuqd1g0gv" method="post" id="sheetdb-form" onsubmit="hideBtn()">
                                 <div class="row">
                                     <div class="col-50">
                                         <h3>Address of where to ship coffee...</h3>
@@ -148,11 +148,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="submit-shipping" id="ship">
+                                        <input type="submit" value="Continue to checkout" class="btn" id="shipBtn" >
+
+
+                                    </div>
 
                                 </div>
-                                <div class="submit-shipping" id="ship">
-                                    <input type="submit" value="Continue to checkout" class="btn" onsubmit=hideBtn()>
-                                </div>
+                               
 
                             </form>
                             
