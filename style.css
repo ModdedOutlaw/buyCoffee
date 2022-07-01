@@ -1,106 +1,107 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Mulish', sans-serif;
-   
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Mulish', sans-serif;
+
 
 }
-body{
+
+body {
   background-color: #000;
   text-align: center;
 
   color: white;
 }
 
-.main-section {
 
-    display: block;
-   margin: auto;
-    width: 94%;
-    padding: 3em;
-    transform: translateX(3%);
 
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+#price-section {
 
-}
-
-#nft-section {
-
-    text-align: center;
-    border-style: solid;
-    border-radius: 1em;
-    border-width: 0.2em;
-
+  text-align: center;
+  border-style: solid;
+  border-radius: 1em;
+  border-width: 0.2em;
+  padding: 0.5em;
+  margin: 1em;
+  font-size: 0.75em;
 
 }
 
 #nft-section:focus {
 
-    background-color: aqua;
+  background-color: aqua;
 
 
 }
 
-  span.price {
-    float: right;
-    color: grey;
-  }
-  
-  
-  .logged-in #login-ui {
-    display: none;
+span.price {
+  float: right;
+  color: grey;
+}
+
+#wax-balance {
+  display: none;
+}
+
+.logged-in #login-ui {
+  display: none;
 }
 
 #app-ui {
-    display: none;
+  display: none;
 }
 
 .logged-in #app-ui {
-    display: block;
+  display: block;
 }
 
 .logged-in-wcw #login-ui-wcw {
-    display: none;
+  display: none;
 }
 
 #app-ui-wcw {
-    display: none;
+  display: none;
 }
 
 .logged-in-wcw #app-ui-wcw {
-    display: block;
+  display: block;
 }
 
 .submit-shipping {
-    display: none;
+  display: none;
 }
 
 .pay-wax {
-    display: block;
+  display: block;
 }
 
 
 .row {
-  display: -ms-flexbox; /* IE10 */
+  display: -ms-flexbox;
+  /* IE10 */
   display: flex;
-  -ms-flex-wrap: wrap; /* IE10 */
+  -ms-flex-wrap: wrap;
+  /* IE10 */
   flex-wrap: wrap;
   margin: 0 -16px;
 }
 
 .col-25 {
-  -ms-flex: 25%; /* IE10 */
+  -ms-flex: 25%;
+  /* IE10 */
   flex: 25%;
 }
 
 .col-50 {
-  -ms-flex: 50%; /* IE10 */
+  -ms-flex: 50%;
+  /* IE10 */
   flex: 50%;
 }
 
 .col-75 {
-  -ms-flex: 75%; /* IE10 */
+  -ms-flex: 75%;
+  /* IE10 */
   flex: 75%;
 }
 
@@ -147,13 +148,14 @@ span.price {
   .row {
     flex-direction: column-reverse;
   }
+
   .col-25 {
     margin-bottom: 20px;
   }
 }
 
-#shipping-form{
-  display:none;
+#shipping-form {
+  display: none;
 }
 
 
@@ -162,28 +164,32 @@ span.price {
   display: inline-block;
   vertical-align: middle;
 }
+
 #wrapper {
   text-align: center;
   background-color: #ea923e;
-  width:300px;
+  width: 300px;
 }
-#wax-logo{
+
+#wax-logo {
   background-color: #ea923e;
 }
-#anchor-logo{
-  background-color: rgb(54,80,162);
+
+#anchor-logo {
+  background-color: rgb(54, 80, 162);
 }
-#loginAnchor{
- background-color: rgb(54,80,162);
+
+#loginAnchor {
+  background-color: rgb(54, 80, 162);
 }
 
 .CustomButton.btn {
   align-items: center;
   background-color: #ea923e;
-  
-  font-family: Roboto Mono,menlo,monaco,consolas,Liberation Mono,Courier New,monospace;
+
+  font-family: Roboto Mono, menlo, monaco, consolas, Liberation Mono, Courier New, monospace;
   font-size: .75rem;
- 
+
   justify-content: center;
 
   text-transform: uppercase;
@@ -197,8 +203,8 @@ span.price {
 }
 
 .w-100 {
-  width: 125px!important;
-  height:30px!important;
+  width: 125px !important;
+  height: 30px !important;
 }
 
 .btn {
@@ -208,11 +214,11 @@ span.price {
   cursor: pointer;
   display: inline-block;
   text-align: center;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
   vertical-align: middle;
 }
 
-#sheetdb-form{
+#sheetdb-form {
   background-color: white;
   color: #000;
 }

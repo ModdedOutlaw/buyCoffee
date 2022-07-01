@@ -47,6 +47,8 @@ async function loginWCW() {
 
         //if autologged in, this simply returns the userAccount w/no popup
         let userAccount = await wax.login();
+
+        checkBalance(userAccount);
         let pubKeys = wax.pubKeys;
         //let str = 'Account: ' + userAccount + '<br/>Active: ' + pubKeys[0] + '<br/>Owner: ' + pubKeys[1]
 
@@ -60,6 +62,10 @@ async function loginWCW() {
            // document.getElementById('wax-addr').textContent = result;
             document.getElementById('account-name').textContent = userAccount;
 
+         
+
+
+            
 
             session = wax;
 
@@ -97,8 +103,10 @@ async function transferWaxWCW() {
     try {
 
         //let resultTrans;
-        let text1 = document.getElementById('wax-cost').textContent;
-        let text2 = "WAX";
+        let text = document.getElementById('wax-cost').textContent;
+        let texttemp = Number(text).toFixed(8);
+        let text1 = texttemp.toString();
+         let text2 = "WAX";
         let total_sent = text1.concat(" ", text2);
        
 
@@ -126,22 +134,10 @@ async function transferWaxWCW() {
             txID = resultTrans.payload.tx;
 
             const resultsJson = JSON.stringify(resultTrans, getCircularReplacer());
-            //loginObj = JSON.parse(loginJson);
-
+      
             console.log('RESULTS -----> ' + resultsJson);
 
             txID = resultTrans.payload.tx;
-
-            /* console.log('SUCCESSFUL TRANSACTION');
-
-             console.log(resultTrans.processed.receipt.status);
-             console.log(resultTrans.payload.tx);
-
-             console.log(resultTrans.processed.action_traces[0].act.data.from);
-             console.log(resultTrans.processed.action_traces[0].act.data.memo);
-             console.log(resultTrans.processed.action_traces[0].act.data.quantity);
-             console.log(resultTrans.processed.action_traces[0].act.data.to);
-             */
 
             if (resultTrans.processed.receipt.status == 'executed') {
                 document.getElementById("pay").style.display = "none";
@@ -171,20 +167,8 @@ async function transferWaxWCW() {
                 expireSeconds: 30
             });
 
-            console.log('RESULTS -----> ' + JSON.stringify(resultTrans));
-
             txID = resultTrans.transaction_id;
 
-            /* console.log('SUCCESSFUL TRANSACTION');
-
-             console.log(resultTrans.processed.receipt.status);
-             console.log(resultTrans.transaction_id);
-
-             console.log(resultTrans.processed.action_traces[0].act.data.from);
-             console.log(resultTrans.processed.action_traces[0].act.data.memo);
-             console.log(resultTrans.processed.action_traces[0].act.data.quantity);
-             console.log(resultTrans.processed.action_traces[0].act.data.to);
-                */
             if (resultTrans.processed.receipt.status == 'executed') {
                 document.getElementById("pay").style.display = "none";
                 document.getElementById("ship").style.display = "block";
@@ -194,12 +178,13 @@ async function transferWaxWCW() {
 
 
     } catch (e) {
+        console.log(e);
         document.getElementById('response').append(e.message);
     }
 
 
     return txID;
-    //console.log('transaction id = ' +txID);
+  
 }
 
 function hideBtn() {
@@ -215,6 +200,36 @@ async function checkTransaction(id) {
     });
 
 }
+
+
+
+async function checkBalance(wam) {
+
+
+    await fetchBalance(wam).then(balance_info => {
+
+        let balance = Number(balance_info.balances[0].amount).toFixed(2).toString();
+
+        document.getElementById('user-balance').textContent = balance;
+        document.getElementById("wax-balance").style.display = "block";
+    //document.getElementById("ship").style.display = "none";
+
+        return balance;
+    });
+
+}
+
+
+async function fetchBalance(wam) {
+
+    const response = await fetch('https://lightapi.eosamsterdam.net/api/balances/wax/' + wam);
+
+    const balance = await response.json();
+
+    return balance;
+
+}
+
 
 async function fetchTransaction(transaction_id) {
 
@@ -245,8 +260,8 @@ async function checkPriceofwax() {
         console.log(current_price_of_wax);
 
         document.getElementById('wax-price').textContent = current_price_of_wax;
-        document.getElementById('dollar-cost').textContent = 0.0001;
-        document.getElementById('wax-cost').textContent = (0.0001 / current_price_of_wax).toFixed(8);
+        document.getElementById('dollar-cost').textContent = 0.01;
+        document.getElementById('wax-cost').textContent = (0.01 / current_price_of_wax).toFixed(2);
 
         let current_price_of_coffee = (18.95 / current_price_of_wax).toFixed(8);
         console.log(current_price_of_coffee);
@@ -316,6 +331,8 @@ function didLogin() {
 
 
     document.getElementById('account-name').textContent = sessionA.auth.actor;
+
+    checkBalance(sessionA.auth.actor); 
 
 
     document.body.classList.add('logged-in');
