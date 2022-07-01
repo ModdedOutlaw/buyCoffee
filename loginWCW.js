@@ -51,13 +51,13 @@ async function loginWCW() {
         //let str = 'Account: ' + userAccount + '<br/>Active: ' + pubKeys[0] + '<br/>Owner: ' + pubKeys[1]
 
 
-        wax.login(identifier).then((result) => {
+        await wax.login(identifier).then((result) => {
             console.log("--------" + result);
      
             document.body.classList.add('logged-in');
             document.body.classList.remove('logged-in-wcw');
 
-            document.getElementById('wax-addr').textContent = result;
+           // document.getElementById('wax-addr').textContent = result;
             document.getElementById('account-name').textContent = userAccount;
 
 
@@ -243,8 +243,8 @@ async function checkPriceofwax() {
         console.log(current_price_of_wax);
 
         document.getElementById('wax-price').textContent = current_price_of_wax;
-        document.getElementById('dollar-cost').textContent = 18.95;
-        document.getElementById('wax-cost').textContent = (18.95 / current_price_of_wax).toFixed(8);
+        document.getElementById('dollar-cost').textContent = 0.0001;
+        document.getElementById('wax-cost').textContent = (0.0001 / current_price_of_wax).toFixed(8);
 
         let current_price_of_coffee = (18.95 / current_price_of_wax).toFixed(8);
         console.log(current_price_of_coffee);
