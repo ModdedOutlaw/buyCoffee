@@ -71,8 +71,7 @@ async function loginWCW() {
             console.log('WAXOBJ: ' + wax.userAccount);
             waxUser = wax.userAccount;
             sessionStorage.setItem('name', waxUser);
-            const mode = sessionStorage.getItem('name');
-            console.log('SESSION STORAGE: '+mode); // 'dark'
+            
             //didLogin();
         })
     } catch (e) {
@@ -90,6 +89,7 @@ function logoutWCW() {
 
     //session.remove();
     //location.reload()
+    sessionStorage.clear();
     document.location.reload();
 }
 
@@ -217,7 +217,7 @@ async function checkBalance(wam) {
 
         document.getElementById('user-balance').textContent = balance;
         document.getElementById("wax-balance").style.display = "block";
-        //document.getElementById("ship").style.display = "none";
+        
 
         return balance;
     });
@@ -336,8 +336,10 @@ function login() {
 // logout and remove session from storage
 function logout() {
     document.body.classList.remove('logged-in');
+    sessionStorage.clear();
     document.location.reload();
     sessionA.remove();
+
 
 }
 
@@ -346,9 +348,10 @@ function didLogin() {
 
     
     document.getElementById('account-name').textContent = sessionA.auth.actor;
+    sessionStorage.setItem('name', waxUser);
 
     checkBalance(sessionA.auth.actor);
- console.log(sessionA);
+ 
 
     document.body.classList.add('logged-in');
     document.body.classList.remove('app-ui');
@@ -364,6 +367,8 @@ function didLogin() {
     linkObj = JSON.parse(linkJson);
 
     waxUser = sessionA.auth.actor;
+
+    sessionStorage.setItem('name', waxUser);
 
     anchorLogin = true;
 
