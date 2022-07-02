@@ -395,4 +395,6 @@ async function buyCoffee() {
 
     console.log('transaction id = ' + transfer_id);
 
+    sessionStorage.setItem('transferId', transfer_id)
+
 }
