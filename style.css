@@ -14,6 +14,17 @@ body {
   color: white;
 }
 
+.bg-img {    
+  background: url('THE jittery ape LOGO test.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:cover;
+  
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+}
+
 
 
 #price-section {
@@ -206,7 +217,10 @@ span.price {
   width: 125px !important;
   height: 30px !important;
 }
-
+.w-145 {
+  width: 175px !important;
+  height: 30px !important;
+}
 .btn {
   background-color: #ea923e;
   border-radius: 0.25rem;

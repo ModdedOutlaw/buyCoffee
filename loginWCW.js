@@ -1,4 +1,4 @@
-let coffee_price = 0.01;
+//let coffee_price = 0.01;
 
 let waxUser;
 
@@ -8,9 +8,9 @@ let waxObj;
 
 let session;
 
-let current_price_of_wax = 0;
+//let current_price_of_wax = 0;
 
-let current_price_of_coffee = 0;
+//let current_price_of_coffee = 0;
 
 let total_sent;
 
@@ -111,13 +111,14 @@ async function transferWaxWCW() {
 
 
         if (anchorLogin) {
+            console.log('Key Type = '+keyType);
             const resultTrans = await link.transact({
                 actions: [{
                     account: 'eosio.token',
                     name: 'transfer',
                     authorization: [{
                         actor: waxUser,
-                        permission: 'active',
+                        permission: keyType,
                     }],
                     data: {
                         from: waxUser,
@@ -314,6 +315,8 @@ let linkObj;
 
 let anchorLogin = false;
 
+let keyType = '';
+
 // tries to restore session, called when document is loaded
 function restoreSession() {
     link.restoreSession(identifier).then((result) => {
@@ -328,7 +331,8 @@ function restoreSession() {
 function login() {
 
     link.login(identifier).then((result) => {
-
+        console.log(result);
+        keyType = result.payload.sp;
         sessionA = result.session;
         didLogin();
     })
@@ -345,11 +349,11 @@ function logout() {
 // called when session was restored or created
 function didLogin() {
 
-
+    
     document.getElementById('account-name').textContent = sessionA.auth.actor;
 
     checkBalance(sessionA.auth.actor);
-
+ console.log(sessionA);
 
     document.body.classList.add('logged-in');
     document.body.classList.remove('app-ui');
@@ -358,15 +362,11 @@ function didLogin() {
     const loginJson = JSON.stringify(sessionA, getCircularReplacer());
     loginObj = JSON.parse(loginJson);
 
-    console.log(loginObj);
+    console.log("SESSION INFO: "+loginObj);
 
     const linkJson = JSON.stringify(link, getCircularReplacer());
-    console.log('LINK ----- ' + link);
-    console.log('LINK ----- ' + linkJson);
 
     linkObj = JSON.parse(linkJson);
-
-    console.log(linkObj);
 
     waxUser = sessionA.auth.actor;
 
