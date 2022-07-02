@@ -166,7 +166,7 @@ span.price {
 }
 
 #shipping-form {
-  display: none;
+  display:block;
 }
 
 
