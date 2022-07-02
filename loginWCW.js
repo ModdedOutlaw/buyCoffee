@@ -70,8 +70,9 @@ async function loginWCW() {
 
             console.log('WAXOBJ: ' + wax.userAccount);
             waxUser = wax.userAccount;
-            console.log('WAX: ' + wax);
-            console.log('WAXSTRING: ' + waxString);
+            sessionStorage.setItem('name', waxUser);
+            const mode = sessionStorage.getItem('name');
+            console.log('SESSION STORAGE: '+mode); // 'dark'
             //didLogin();
         })
     } catch (e) {
@@ -98,13 +99,7 @@ async function transferWaxWCW() {
 
     try {
 
-        //let resultTrans;
-        //let text = document.getElementById('wax-cost').textContent;
-        //let texttemp = Number(text).toFixed(8);
-        console.log("TOTAL SENT--->"+total_sent);
-        //let texttemp = total_sent.toFixed(8);
-        //console.log(texttemp);
-       //let text1 = total_sent.toString();
+
        let text2 = "WAX";
        let send_amount = total_sent.concat(" ", text2);
        
