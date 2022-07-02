@@ -9,10 +9,6 @@
     <script src="https://unpkg.com/anchor-link-browser-transport@3"></script>
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.js"
-        integrity="sha512-5m2r+g00HDHnhXQDbRLAfZBwPpPCaK+wPLV6lm8VQ+09ilGdHfXV7IVyKPkLOTfi4vTTUVJnz7ELs7cA87/GMA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -138,8 +134,7 @@
 
                 <div class="col-75">
                     <div class="container">
-                        <form action="https://sheetdb.io/api/v1/oabfnuqd1g0gv" method="post" id="sheetdb-form"
-                            onsubmit="hideBtn()">
+                        <form action="https://sheetdb.io/api/v1/oabfnuqd1g0gv" method="post" id="sheetdb-form">
                             <div class="row">
                                 <div class="col-50">
                                     <h3>Address of where to ship coffee...</h3>
@@ -176,7 +171,9 @@
                                     </div>
                                 </div>
                                 <div class="submit-shipping" id="ship">
-                                    <input type="submit" value="Continue to checkout" class="btn" id="shipBtn">
+                                    <!-- <input type="submit" value="Continue to checkout" class="btn" id="shipBtn"> -->
+
+                                    <button type="submit" class="CustomButton w-145 btn btn-primary" id="shipBtn" >Send Shipping Info</button>
 
 
                                 </div>
@@ -195,6 +192,7 @@
                                     body: new FormData(document.getElementById("sheetdb-form")),
                                 }).then(response => response.json()).then((html) => {
                                     console.log("SENT");
+                                    location.href = 'orderSubmitted.html';
                                 });
                             });
                         </script>
