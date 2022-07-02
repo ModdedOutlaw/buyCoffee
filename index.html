@@ -188,12 +188,14 @@
                             
                             form.addEventListener("submit", e => {
                                 e.preventDefault();
+                                console.log(document.getElementById('fname').value);
                                 fetch(form.action, {
                                     method: "POST",
                                     body: new FormData(document.getElementById("sheetdb-form")),
                                 }).then(response => response.json()).then((html) => {
                                     console.log("SENT");
-                                    location.href = 'orderSubmitted.html';
+                                   
+                                    //location.href = 'orderSubmitted.html';
                                 });
                             });
                         </script>
