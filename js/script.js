@@ -5,7 +5,7 @@ const iconQtyAction = document.querySelector('.header__icon');
 
 //fetch all data
 function fetchData() {
-  fetch('../products.json')
+  fetch('./products.json')
     .then((data) => data.json())
     .then((response) => displayData(response))
     .catch((err) => console.error(err.message));
