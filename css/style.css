@@ -1,0 +1,43 @@
+
+.header > * {
+  cursor: pointer;
+ 
+}
+
+.container {
+  
+  background-color: #000000;
+
+}
+
+
+
+.shoppingCartApp {
+  display: none;
+}
+.cartItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+}
+.cartInfo > * {
+  margin-bottom: 1rem;
+}
+.item img {
+  max-width: 15rem;
+  width: 100%;
+}
+.item .buttons-action {
+  display: flex;
+  gap: 5vw;
+  justify-content: center;
+  align-items: center;
+}
+input[type='number'] {
+  height: 30px;
+}
+input[type='number']:hover::-webkit-inner-spin-button {
+  width: 14px;
+  height: 30px;
+}

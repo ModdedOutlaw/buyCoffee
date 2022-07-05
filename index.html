@@ -20,9 +20,15 @@
 
     <link rel="stylesheet" href="style.css">
 
+    <script src="./js/script.js" type="module"></script>
+    <link rel="stylesheet" href="./css/style.css" />
+
 
     <script src='waxjs.js'></script>
     <script src="loginWCW.js"></script>
+
+
+
 
 
 </head>
@@ -30,7 +36,6 @@
 
 
 <body>
-
 
 
     <div class="d-flex bd-highlight mb-3">
@@ -53,8 +58,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
 
 
@@ -98,36 +101,66 @@
     </div>
 
 
+    <div class="d-flex flex-md-nowrap flex-wrap justify-content-center">
+        <div class="allProductsApp">
+            <header class="header">
+                <h2 class="header__title">Shopping Cart</h2>
+                <div class="header__icon">
+                    🛒 <span class="header__icon--total">0</span>
+                </div>
 
+                <div class="flex-shrink-0">
 
+                    <div class="container-sm" id="price-section">
+        
+        
+                        <div class="d-flex justify-content-center">The Jittery Ape OG Blend 12oz Ground Coffee</div>
+                        <div class="d-flex justify-content-center"><span id="wax-cost"></span>&nbsp;wax&nbsp;=&nbsp;$<span
+                                id="dollar-cost"></span></div>
+                    </div>
+        
+                
+        
+        
+                </div>
+        
+            </header>
+            <div class="d-inline-flex p-2 bd-highlight">
+                <div class="products d-flex flex-wrap justify-content-center"></div>
+            </div>
+        </div>
+
+        <div class="shoppingCartApp">
+            <header>
+                <h2>
+                    <a class="btn" href="./index.html">Go back</a>
+                </h2>
+            </header>
+            <main class="container">
+                <section class="shopping-cart">
+                    <h2>Total price: $<span class="totalPrice">0</span></h2>
+                    <div class="cart-items">
+                        <div class="item"></div>
+                    </div>
+
+                    <div class="pay-wax" id="pay">
+
+                        <!-- <input value="Purchase coffee" class="CustomButton w-145 btn btn-primary" id="sign" onclick=buyCoffee()> -->
+        
+                        <button type="submit" class="CustomButton w-145 btn btn-primary" id="sign" onclick=buyCoffee()>Purchase
+                            Coffee</button>
+                        <!-- <pre><code id="response">Transaction Response </code></pre>-->
+        
+                    </div>
+        
+                </section>
+            </main>
+        </div>
+    </div>
 
 
     <div class="d-flex flex-md-nowrap flex-wrap justify-content-center">
-        <div class="flex-shrink-0">
-
-            <img src="0776d3_bb75e45590bb42e296b33da3aeee67eb_mv2.webp" width="250em" /><br>
-
-
-            <div class="container-sm" id="price-section">
-
-
-                <div class="d-flex justify-content-center">The Jittery Ape OG Blend 12oz Ground Coffee</div>
-                <div class="d-flex justify-content-center"><span id="wax-cost"></span>&nbsp;wax&nbsp;=&nbsp;$<span
-                        id="dollar-cost"></span></div>
-            </div>
-
-            <div class="pay-wax" id="pay">
-
-                <!-- <input value="Purchase coffee" class="CustomButton w-145 btn btn-primary" id="sign" onclick=buyCoffee()> -->
-
-                <button type="submit" class="CustomButton w-145 btn btn-primary" id="sign" onclick=buyCoffee() >Purchase Coffee</button>
-                <!-- <pre><code id="response">Transaction Response </code></pre>-->
-
-            </div>
-
-
-        </div>
-
+       
 
         <div class="flex-grow-1 ms-3" id="shipping-form">
             <div class="p-2 bd-highlight">
@@ -173,7 +206,8 @@
                                 <div class="submit-shipping" id="ship">
                                     <!-- <input type="submit" value="Continue to checkout" class="btn" id="shipBtn"> -->
 
-                                    <button type="submit" class="CustomButton w-145 btn btn-primary" id="shipBtn" >Send Shipping Info</button>
+                                    <button type="submit" class="CustomButton w-145 btn btn-primary" id="shipBtn">Send
+                                        Shipping Info</button>
 
 
                                 </div>
@@ -185,7 +219,7 @@
 
                         <script>
                             var form = document.getElementById('sheetdb-form');
-                            
+
                             form.addEventListener("submit", e => {
                                 e.preventDefault();
                                 console.log(document.getElementById('fname').value);
@@ -194,7 +228,7 @@
                                     body: new FormData(document.getElementById("sheetdb-form")),
                                 }).then(response => response.json()).then((html) => {
                                     console.log("SENT");
-                                   
+
                                     //location.href = 'orderSubmitted.html';
                                 });
                             });
@@ -213,6 +247,10 @@
 
     </div>
 
+    </div>
+
+
 </body>
+
 
 </html>
