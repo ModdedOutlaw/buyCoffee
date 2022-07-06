@@ -140,6 +140,7 @@ async function transferWaxWCW() {
                 document.getElementById("pay").style.display = "none";
                 document.getElementById("ship").style.display = "block";
                 document.getElementById("shipping-form").style.display = "block";
+           
             }
 
 
@@ -170,6 +171,9 @@ async function transferWaxWCW() {
                 document.getElementById("pay").style.display = "none";
                 document.getElementById("ship").style.display = "block";
                 document.getElementById("shipping-form").style.display = "block";
+               // console.log(document.querySelector('modify-cart'));
+               document.getElementsByClassName('shopping-cart')[0].style.display = "none";
+              // document.getElementById("modify-items").style.display = "none";
             }
         }
 

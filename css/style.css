@@ -33,11 +33,7 @@
   position: relative;
 }
 .header__icon--total {
-  border-radius: 30%;
-  font-size: 1.5rem;
-  position: absolute;
-  bottom: -25%;
-  right: -65%;
+
 }
 
 

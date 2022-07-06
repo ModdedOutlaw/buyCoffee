@@ -113,8 +113,8 @@
         <div class="allProductsApp">
             <header class="header">
                 <div class="header__icon">
-                    <button type="submit" class="CustomButton w-145 btn btn-primary">Checkout 🛒 <span id="cart_total"></span></button>
-                    <br><span id="total_wax_order"> </span><span class="header__icon--total" >0</span>
+                    <button type="submit" class="CustomButton w-145 btn btn-primary">Checkout 🛒 <span class="header__icon--total" >0</span></button>
+                    <br><span id="total_wax_order"> </span>
                 </div>
             </header>
 
@@ -132,7 +132,7 @@
             <main class="container">
                 <section class="shopping-cart">
                     <h2>Total price: $<span class="totalPrice">0</span></h2>
-                    <div class="cart-items">
+                    <div class="cart-items" id="modify-cart">
                         <div class="item"></div>
                     </div>
 
@@ -146,161 +146,162 @@
           
 
                     </div>
-                    <div class="d-flex flex-md-nowrap flex-wrap justify-content-center">
-
-
-                        <div class="flex-grow-1 ms-3" id="shipping-form">
-                            <div class="p-2 bd-highlight">
-                                <div class="col-75">
-                                    <div class="container">
-                                        <form action="https://sheetdb.io/api/v1/fy2pn7ncznspk" method="post"
-                                            id="sheetdb-form">
-                                            <div class="row">
-                                                <div class="col-50">
-                                                    <h3>Address of where to ship coffee...</h3>
-                                                    <label for="name"><i class="fa fa-user"></i> Full Name</label>
-                                                    <input type="text" id="fname" name="data[name]"
-                                                        placeholder="John M. Doe" required>
-
-                                                    <label for="waxaddress"><i class="fa fa-user"></i> wax
-                                                        address</label>
-                                                    <input type="text" id="wax-addr" name="data[waxaddress]"
-                                                        placeholder="yourwaxaddress" required>
-
-                                                    <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                                                    <input type="text" id="email" name="data[email]"
-                                                        placeholder="john@example.com" required>
-
-                                                    <label for="address"><i class="fa fa-address-card-o"></i>Street
-                                                        Address</label>
-                                                    <input type="text" id="adr" name="data[address]"
-                                                        placeholder="542 W. 15th Street">
-
-                                                    <label for="city"><i class="fa fa-institution"></i> City</label>
-                                                    <input type="text" id="city" name="data[city]"
-                                                        placeholder="New York" required>
-
-                                                    <div class="row">
-                                                        <div class="col-25">
-
-                                                            <label for="state">State</label>
-                                                            <input type="text" id="state" name="data[state]"
-                                                                placeholder="NY" required>
-
-                                                        </div>
-                                                        <div class="col-25">
-
-                                                            <label for="zip">Zip</label>
-                                                            <input type="text" id="zip" name="data[zip]"
-                                                                placeholder="10001" required>
-
-                                                        </div>
-                                                        
-                                                    </div>
-
-                                                </div>
-
-
-                                                <div class="submit-shipping" id="ship">
-                                                    <!-- <input type="submit" value="Continue to checkout" class="btn" id="shipBtn"> -->
-
-                                                    <button type="submit" class="CustomButton w-145 btn btn-primary"
-                                                        id="shipBtn">Send
-                                                        Shipping Info</button>
-
-
-                                                </div>
-
-                                            </div>
-
-                                            <input type="hidden" id="12ozEspresso" name="data[1]">
-                                                        <input type="hidden" id="12ozJitteryBean" name="data[2]">
-                                                        <input type="hidden" id="12ozJitteryGround" name="data[3]">
-                                                        <input type="hidden" id="12ozOGBean" name="data[4]">
-                                                        <input type="hidden" id="12ozOGEspresso" name="data[5]">
-                                                        <input type="hidden" id="12ozOGGround" name="data[6]">
-
-
-                                        </form>
-
-                                        <script>
-                                            var form = document.getElementById('sheetdb-form');
-
-                                           
-
-
-                                            form.addEventListener("submit", e => {
-                                                e.preventDefault();
-
-                                                console.log("SENT FORM - transferID = " +
-                                                    sessionStorage.getItem('transferId'));
-
-
-                                                console.log(
-                                                    "---------------ORDER AMOUNTS------------------"
-                                                );
-
-                                                document.getElementById('12ozEspresso').value = sessionStorage.getItem('1');
-                                                document.getElementById('12ozJitteryBean').value = sessionStorage.getItem('2');
-                                                document.getElementById('12ozJitteryGround').value = sessionStorage.getItem('3');
-                                                document.getElementById('12ozOGBean').value = sessionStorage.getItem('4');
-                                                document.getElementById('12ozOGEspresso').value = sessionStorage.getItem('5');
-                                                document.getElementById('12ozOGGround').value = sessionStorage.getItem('6');
-                        
-
-
-
-                                                console.log("TOTAL 12ozEspresso = " + sessionStorage
-                                                    .getItem('1'));
-                                                console.log("TOTAL 12ozJitteryBean = " +
-                                                    sessionStorage.getItem('2'));
-                                                console.log("TOTAL 12ozJitteryGround = " +
-                                                    sessionStorage.getItem('3'));
-
-                                                console.log("TOTAL 12ozOGBean = " + sessionStorage
-                                                    .getItem('4'));
-                                                console.log("TOTAL 12ozOGEspresso = " +
-                                                    sessionStorage.getItem('5'));
-                                                console.log("TOTAL 12ozOGGround = " + sessionStorage
-                                                    .getItem('6'));
-
-
-
-                                                console.log(document.getElementById('fname').value);
-                                                console.log(document.getElementById('12ozEspresso').value);
-
-
-                                                fetch(form.action, {
-                                                    method: "POST",
-                                                    body: new FormData(document.getElementById(
-                                                        "sheetdb-form")),
-                                    
-                                                }).then(response => response.json()).then((html) => {
-                                                    console.log("SENT");
-                                                    console.log("SENT FORM - price_wax = " +
-                                                    sessionStorage.getItem('price_wax'));
-
-
-                                                    //sessionStorage.clear();
-
-
-
-                                                   location.href = 'orderSubmitted.html';
-                                                   
-                                                });
-                                            });
-                                        </script>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
+                    
 
 
 
                 </section>
+                <div class="d-flex flex-md-nowrap flex-wrap justify-content-center">
+
+
+                    <div class="flex-grow-1 ms-3" id="shipping-form">
+                        <div class="p-2 bd-highlight">
+                            <div class="col-75">
+                                <div class="container">
+                                    <form action="https://sheetdb.io/api/v1/fy2pn7ncznspk" method="post"
+                                        id="sheetdb-form">
+                                        <div class="row">
+                                            <div class="col-50">
+                                                <h3>Address of where to ship coffee...</h3>
+                                                <label for="name"><i class="fa fa-user"></i> Full Name</label>
+                                                <input type="text" id="fname" name="data[name]"
+                                                    placeholder="John M. Doe" required>
+
+                                                <label for="waxaddress"><i class="fa fa-user"></i> wax
+                                                    address</label>
+                                                <input type="text" id="wax-addr" name="data[waxaddress]"
+                                                    placeholder="yourwaxaddress" required>
+
+                                                <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                                                <input type="text" id="email" name="data[email]"
+                                                    placeholder="john@example.com" required>
+
+                                                <label for="address"><i class="fa fa-address-card-o"></i>Street
+                                                    Address</label>
+                                                <input type="text" id="adr" name="data[address]"
+                                                    placeholder="542 W. 15th Street">
+
+                                                <label for="city"><i class="fa fa-institution"></i> City</label>
+                                                <input type="text" id="city" name="data[city]"
+                                                    placeholder="New York" required>
+
+                                                <div class="row">
+                                                    <div class="col-25">
+
+                                                        <label for="state">State</label>
+                                                        <input type="text" id="state" name="data[state]"
+                                                            placeholder="NY" required>
+
+                                                    </div>
+                                                    <div class="col-25">
+
+                                                        <label for="zip">Zip</label>
+                                                        <input type="text" id="zip" name="data[zip]"
+                                                            placeholder="10001" required>
+
+                                                    </div>
+                                                    
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="submit-shipping" id="ship">
+                                                <!-- <input type="submit" value="Continue to checkout" class="btn" id="shipBtn"> -->
+
+                                                <button type="submit" class="CustomButton w-145 btn btn-primary"
+                                                    id="shipBtn">Send
+                                                    Shipping Info</button>
+
+
+                                            </div>
+
+                                        </div>
+
+                                        <input type="hidden" id="12ozEspresso" name="data[1]">
+                                                    <input type="hidden" id="12ozJitteryBean" name="data[2]">
+                                                    <input type="hidden" id="12ozJitteryGround" name="data[3]">
+                                                    <input type="hidden" id="12ozOGBean" name="data[4]">
+                                                    <input type="hidden" id="12ozOGEspresso" name="data[5]">
+                                                    <input type="hidden" id="12ozOGGround" name="data[6]">
+
+
+                                    </form>
+
+                                    <script>
+                                        var form = document.getElementById('sheetdb-form');
+
+                                       
+
+
+                                        form.addEventListener("submit", e => {
+                                            e.preventDefault();
+
+                                            console.log("SENT FORM - transferID = " +
+                                                sessionStorage.getItem('transferId'));
+
+
+                                            console.log(
+                                                "---------------ORDER AMOUNTS------------------"
+                                            );
+
+                                            document.getElementById('12ozEspresso').value = sessionStorage.getItem('1');
+                                            document.getElementById('12ozJitteryBean').value = sessionStorage.getItem('2');
+                                            document.getElementById('12ozJitteryGround').value = sessionStorage.getItem('3');
+                                            document.getElementById('12ozOGBean').value = sessionStorage.getItem('4');
+                                            document.getElementById('12ozOGEspresso').value = sessionStorage.getItem('5');
+                                            document.getElementById('12ozOGGround').value = sessionStorage.getItem('6');
+                    
+
+
+
+                                            console.log("TOTAL 12ozEspresso = " + sessionStorage
+                                                .getItem('1'));
+                                            console.log("TOTAL 12ozJitteryBean = " +
+                                                sessionStorage.getItem('2'));
+                                            console.log("TOTAL 12ozJitteryGround = " +
+                                                sessionStorage.getItem('3'));
+
+                                            console.log("TOTAL 12ozOGBean = " + sessionStorage
+                                                .getItem('4'));
+                                            console.log("TOTAL 12ozOGEspresso = " +
+                                                sessionStorage.getItem('5'));
+                                            console.log("TOTAL 12ozOGGround = " + sessionStorage
+                                                .getItem('6'));
+
+
+
+                                            console.log(document.getElementById('fname').value);
+                                            console.log(document.getElementById('12ozEspresso').value);
+
+
+                                            fetch(form.action, {
+                                                method: "POST",
+                                                body: new FormData(document.getElementById(
+                                                    "sheetdb-form")),
+                                
+                                            }).then(response => response.json()).then((html) => {
+                                                console.log("SENT");
+                                                console.log("SENT FORM - price_wax = " +
+                                                sessionStorage.getItem('price_wax'));
+
+
+                                                //sessionStorage.clear();
+
+
+
+                                               location.href = 'orderSubmitted.html';
+                                               
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
             </main>
         </div>
     </div>

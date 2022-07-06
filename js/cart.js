@@ -45,7 +45,7 @@ function displayCartItems(currentCart) {
         </div>
         <h5 class="product__1--price">${item.price} $</h5>
       </div>
-      <div class="buttons-action">
+      <div class="buttons-action" >
         <form class="form">
           <label for="quantity">Quantity:</label>
           <input
@@ -86,7 +86,7 @@ function displayCartItems(currentCart) {
 
     console.log('QUANTITY IN CART = ' + getLocalStorage('qtyCart'));
 
-    document.getElementById('cart_total').textContent = getLocalStorage('qtyCart');
+    //document.getElementById('cart_total').textContent = getLocalStorage('qtyCart');
 
 
 

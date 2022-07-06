@@ -3,6 +3,7 @@ import { getLocalStorage, setLocalStorage } from './script.js';
 
 const iconQty = document.querySelector('.header__icon--total');
 const productContainer = document.querySelector('.products');
+const totalCart = document.getElementById('cart_total');
 
 let currentCart;
 
@@ -90,6 +91,8 @@ function addToCart(e, price) {
 function displayCartIcon(type) {
   if (type !== 'initialState') {
     const currentQty = Number(iconQty.innerText) + 1;
+   // const currentCartQty = Number(currentCart.innerText) + 1;
+   // currentCartQty.innerText = currentCartQty;
     iconQty.innerText = currentQty;
     setLocalStorage('qtyCart', currentQty);
   } else {
