@@ -1,5 +1,3 @@
-
-
 let waxUser;
 
 let txID = '';
@@ -72,7 +70,7 @@ async function loginWCW() {
             console.log('WAXOBJ: ' + wax.userAccount);
             waxUser = wax.userAccount;
             sessionStorage.setItem('name', waxUser);
-            
+
             //didLogin();
         })
     } catch (e) {
@@ -99,15 +97,15 @@ async function transferWaxWCW() {
 
     try {
 
-    total_sent = "0.01000000";
-      // total_sent = sessionStorage.getItem('final_price_wax');
-       let text2 = "WAX";
-       let send_amount = total_sent.concat(" ", text2);
-       
+        total_sent = "0.01000000";
+        // total_sent = sessionStorage.getItem('final_price_wax');
+        let text2 = "WAX";
+        let send_amount = total_sent.concat(" ", text2);
+
 
 
         if (anchorLogin) {
-            console.log('Key Type = '+keyType);
+            console.log('Key Type = ' + keyType);
             const resultTrans = await link.transact({
                 actions: [{
                     account: 'eosio.token',
@@ -140,7 +138,9 @@ async function transferWaxWCW() {
                 document.getElementById("pay").style.display = "none";
                 document.getElementById("ship").style.display = "block";
                 document.getElementById("shipping-form").style.display = "block";
-           
+                document.getElementsByClassName('shopping-cart')[0].style.display = "none";
+
+
             }
 
 
@@ -171,9 +171,8 @@ async function transferWaxWCW() {
                 document.getElementById("pay").style.display = "none";
                 document.getElementById("ship").style.display = "block";
                 document.getElementById("shipping-form").style.display = "block";
-               // console.log(document.querySelector('modify-cart'));
-               document.getElementsByClassName('shopping-cart')[0].style.display = "none";
-              // document.getElementById("modify-items").style.display = "none";
+                document.getElementsByClassName('shopping-cart')[0].style.display = "none";
+
             }
         }
 
@@ -222,7 +221,7 @@ async function checkBalance(wam) {
 
         document.getElementById('user-balance').textContent = balance;
         document.getElementById("wax-balance").style.display = "block";
-        
+
 
         return balance;
     });
@@ -269,11 +268,11 @@ async function checkPriceofwax() {
         let current_price_of_wax = price.wax.usd;
 
         //localStorage.setItem('price_wax',price.wax.usd);
-        sessionStorage.setItem('wax_price',price.wax.usd);
+        sessionStorage.setItem('wax_price', price.wax.usd);
 
         console.log('PRICE OF WAX --- ' + sessionStorage.getItem('wax_price'));
 
-        
+
 
 
 
@@ -355,12 +354,12 @@ function logout() {
 // called when session was restored or created
 function didLogin() {
 
-    
+
     document.getElementById('account-name').textContent = sessionA.auth.actor;
     sessionStorage.setItem('name', waxUser);
 
     checkBalance(sessionA.auth.actor);
- 
+
 
     document.body.classList.add('logged-in');
     document.body.classList.remove('app-ui');
@@ -369,7 +368,7 @@ function didLogin() {
     const loginJson = JSON.stringify(sessionA, getCircularReplacer());
     loginObj = JSON.parse(loginJson);
 
-    console.log("SESSION INFO: "+loginObj);
+    console.log("SESSION INFO: " + loginObj);
 
     const linkJson = JSON.stringify(link, getCircularReplacer());
 
