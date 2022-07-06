@@ -1,4 +1,4 @@
-//let coffee_price = 0.01;
+
 
 let waxUser;
 
@@ -14,6 +14,7 @@ let session;
 
 let total_sent;
 
+//sessionStorage.setItem('usd_price','18.99');
 
 
 //automatically check for credentials
@@ -94,12 +95,27 @@ function logoutWCW() {
 }
 
 async function transferWaxWCW() {
+    document.getElementById("12ozEspresso").value = localStorage.getItem("1");
 
+                                           
+    document.getElementById("12ozJitteryBean").value = localStorage.getItem("2");
+
+  
+    document.getElementById("12ozJitteryGround").value = localStorage.getItem("3");
+
+   
+    document.getElementById("12ozOGBean").value = localStorage.getItem("4");
+
+    document.getElementById("12ozOGEspresso").value = localStorage.getItem("5");
+
+   
+    document.getElementById("12ozOGGround").value = localStorage.getItem("6");
 
 
     try {
 
-
+    total_sent = "0.01000000";
+      // total_sent = sessionStorage.getItem('final_price_wax');
        let text2 = "WAX";
        let send_amount = total_sent.concat(" ", text2);
        
@@ -262,21 +278,18 @@ async function checkPriceofwax() {
     await fetchWaxPrice().then(price => {
 
         let current_price_of_wax = price.wax.usd;
-        let usd_price = 18.99;
+
+        let usd_price = sessionStorage.getItem('usd_price');
+
         let current_price_of_coffee = (usd_price / current_price_of_wax).toFixed(8);
 
         total_sent = current_price_of_coffee;
 
-
-        console.log(current_price_of_wax);
+        sessionStorage.setItem('price_wax', price.wax.usd.toString());
 
         document.getElementById('wax-price').textContent = current_price_of_wax;
         document.getElementById('dollar-cost').textContent = usd_price;
-        document.getElementById('wax-cost').textContent = (usd_price / current_price_of_wax).toFixed(2);
-
-       
-        
-        console.log(current_price_of_coffee);
+        document.getElementById('wax-cost').textContent = current_price_of_coffee;
 
         return current_price_of_coffee;
     });

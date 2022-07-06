@@ -101,22 +101,21 @@
     </div>
 
 
-    <div class="d-flex flex-md-nowrap flex-wrap justify-content-center" id="price-section">
 
-
-        <div class="d-flex justify-content-center">The Jittery Ape OG Blend 12oz Ground Coffee</div>
-        <div class="d-flex justify-content-center"><span id="wax-cost"></span>&nbsp;wax&nbsp;=&nbsp;$<span
-                id="dollar-cost"></span></div>
+    <div class="d-flex flex-column bd-highlight mb-2 justify-content-center ">
+        <div class="p-2 bd-highlight">The Jittery Ape OG Blend 12oz Ground Coffee</div>
+        <div class="p-2 bd-highlight"><span id="wax-cost"></span>&nbsp;wax&nbsp;=&nbsp;$<span id="dollar-cost"></span>
+        </div>
     </div>
-    
+
     <div class="d-flex flex-md-nowrap flex-wrap justify-content-center">
 
         <div class="allProductsApp">
             <header class="header">
-            <div class="header__icon">
-                Checkout 🛒 <span class="header__icon--total">0</span>
-            </div>
-           </header>
+                <div class="header__icon">
+                    Checkout 🛒 <span class="header__icon--total">0</span>
+                </div>
+            </header>
 
             <div class="d-inline-flex p-2 bd-highlight">
                 <div class="products d-flex flex-wrap justify-content-center"></div>
@@ -153,7 +152,7 @@
                             <div class="p-2 bd-highlight">
                                 <div class="col-75">
                                     <div class="container">
-                                        <form action="https://sheetdb.io/api/v1/oabfnuqd1g0gv" method="post"
+                                        <form action="https://sheetdb.io/api/v1/fy2pn7ncznspk" method="post"
                                             id="sheetdb-form">
                                             <div class="row">
                                                 <div class="col-50">
@@ -195,8 +194,11 @@
                                                                 placeholder="10001" required>
 
                                                         </div>
+                                                        
                                                     </div>
+
                                                 </div>
+
 
                                                 <div class="submit-shipping" id="ship">
                                                     <!-- <input type="submit" value="Continue to checkout" class="btn" id="shipBtn"> -->
@@ -210,23 +212,80 @@
 
                                             </div>
 
+                                            <input type="hidden" id="12ozEspresso" name="data[1]">
+                                                        <input type="hidden" id="12ozJitteryBean" name="data[2]">
+                                                        <input type="hidden" id="12ozJitteryGround" name="data[3]">
+                                                        <input type="hidden" id="12ozOGBean" name="data[4]">
+                                                        <input type="hidden" id="12ozOGEspresso" name="data[5]">
+                                                        <input type="hidden" id="12ozOGGround" name="data[6]">
+
 
                                         </form>
 
                                         <script>
                                             var form = document.getElementById('sheetdb-form');
 
+                                           
+
+
                                             form.addEventListener("submit", e => {
                                                 e.preventDefault();
+
+                                                console.log("SENT FORM - transferID = " +
+                                                    sessionStorage.getItem('transferId'));
+
+
+                                                console.log(
+                                                    "---------------ORDER AMOUNTS------------------"
+                                                );
+
+                                                document.getElementById('12ozEspresso').value = sessionStorage.getItem('1');
+                                                document.getElementById('12ozJitteryBean').value = sessionStorage.getItem('2');
+                                                document.getElementById('12ozJitteryGround').value = sessionStorage.getItem('3');
+                                                document.getElementById('12ozOGBean').value = sessionStorage.getItem('4');
+                                                document.getElementById('12ozOGEspresso').value = sessionStorage.getItem('5');
+                                                document.getElementById('12ozOGGround').value = sessionStorage.getItem('6');
+                        
+
+
+
+                                                console.log("TOTAL 12ozEspresso = " + sessionStorage
+                                                    .getItem('1'));
+                                                console.log("TOTAL 12ozJitteryBean = " +
+                                                    sessionStorage.getItem('2'));
+                                                console.log("TOTAL 12ozJitteryGround = " +
+                                                    sessionStorage.getItem('3'));
+
+                                                console.log("TOTAL 12ozOGBean = " + sessionStorage
+                                                    .getItem('4'));
+                                                console.log("TOTAL 12ozOGEspresso = " +
+                                                    sessionStorage.getItem('5'));
+                                                console.log("TOTAL 12ozOGGround = " + sessionStorage
+                                                    .getItem('6'));
+
+
+
                                                 console.log(document.getElementById('fname').value);
+                                                console.log(document.getElementById('12ozEspresso').value);
+
+
                                                 fetch(form.action, {
                                                     method: "POST",
                                                     body: new FormData(document.getElementById(
                                                         "sheetdb-form")),
+                                    
                                                 }).then(response => response.json()).then((html) => {
                                                     console.log("SENT");
+                                                    console.log("SENT FORM - price_wax = " +
+                                                    sessionStorage.getItem('price_wax'));
 
-                                                    //location.href = 'orderSubmitted.html';
+
+                                                    sessionStorage.clear();
+
+
+
+                                                   location.href = 'orderSubmitted.html';
+                                                   
                                                 });
                                             });
                                         </script>
@@ -251,19 +310,19 @@
 
     <div class="shoppingCartApp">
         <header class="header">
-          <h2 class="header__title">
-            <a class="btn" href="./index.html">Go back</a>
-          </h2>
+            <h2 class="header__title">
+                <a class="btn" href="./index.html">Go back</a>
+            </h2>
         </header>
         <main class="container">
-          <section class="shopping-cart">
-            <h2>Total price: <span class="totalPrice">0</span>$</h2>
-            <div class="cart-items">
-              <div class="item"></div>
-            </div>
-          </section>
+            <section class="shopping-cart">
+                <h2>Total price: <span class="totalPrice">0</span>$</h2>
+                <div class="cart-items">
+                    <div class="item"></div>
+                </div>
+            </section>
         </main>
-      </div>
+    </div>
 
 </body>
 

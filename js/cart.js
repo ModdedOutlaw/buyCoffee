@@ -1,4 +1,5 @@
 import { getLocalStorage, setLocalStorage } from './script.js';
+
 import { displayCartIcon } from './products.js';
 
 const currentCartItemsContainer = document.querySelector('.item');
@@ -14,13 +15,16 @@ function selectElementsForCart(card) {
 }
 
 function displayCartItems(currentCart) {
+
   currentCartItemsContainer.innerHTML = '';
 
   currentPrice = [];
+
   currentCart.forEach((item) => {
+
     const currentQtyPrice = Number(item.price) * item.qty;
     currentPrice.push(currentQtyPrice);
-
+   
     currentCartItemsContainer.innerHTML += `
     <div class="cartItem" id=${item.id}>
         <div class="cartInfo">
@@ -55,9 +59,48 @@ function displayCartItems(currentCart) {
     `;
   });
 
+
+
   totalPrice.innerText = currentPrice
     .reduce((curr, acc) => curr + acc, 0)
     .toFixed(2);
+
+    let total_wax_session = currentPrice.reduce((curr, acc) => curr + acc, 0).toFixed(2) / sessionStorage.getItem('price_wax');
+
+    console.log("TOTAL PRICE SESSION $$$$ = " + totalPrice.innerText);
+
+    console.log("TOTAL PRICE SESSION WAX = " + total_wax_session.toFixed(8).toString());
+
+
+
+
+
+    sessionStorage.setItem('final_price_wax',total_wax_session.toFixed(8).toString());
+
+    sessionStorage.setItem('final_price_usd',totalPrice.innerText);
+
+    console.log(currentCart);
+
+    currentCart.forEach((item) =>{
+       sessionStorage.setItem(item.id,item.qty.toString());
+    } );
+
+  
+    
+    
+    console.log("TOTAL 12ozEspresso = " + sessionStorage
+    .getItem('1'));
+console.log("TOTAL 12ozJitteryBean = " +
+    sessionStorage.getItem('2'));
+console.log("TOTAL 12ozJitteryGround = " +
+    sessionStorage.getItem('3'));
+
+console.log("TOTAL 12ozOGBean = " + sessionStorage
+    .getItem('4'));
+console.log("TOTAL 12ozOGEspresso = " +
+    sessionStorage.getItem('5'));
+console.log("TOTAL 12ozOGGround = " + sessionStorage
+    .getItem('6'));
 
   loadCartListeners();
 }
@@ -86,6 +129,10 @@ function handleDelete(e) {
 
   setLocalStorage('currentCart', filteredCart);
   setLocalStorage('qtyCart', filteredQty);
+
+  sessionStorage.setItem(id, '0');
+
+
 }
 
 function handleChange(e) {
@@ -103,8 +150,14 @@ function handleChange(e) {
     0
   );
 
+
+
   setLocalStorage('currentCart', filteredCart);
   setLocalStorage('qtyCart', filteredQty);
 }
+
+
+
+
 
 export { displayCartItems, selectElementsForCart };

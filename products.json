@@ -4,7 +4,7 @@
       "sys": { "id": "1" },
       "fields": {
         "title": "12ozEspresso",
-        "price": 17.99,
+        "price": 18.99,
         "image": { "fields": { "file": { "url": "images/12ozEspresso.webp" } } }
       }
     },
@@ -12,7 +12,7 @@
       "sys": { "id": "2" },
       "fields": {
         "title": "12ozJitteryBean",
-        "price": 17.99,
+        "price": 18.99,
         "image": { "fields": { "file": { "url": "images/12ozJitteryBean.webp" } } }
       }
     },
@@ -20,7 +20,7 @@
       "sys": { "id": "3" },
       "fields": {
         "title": "12ozJitteryGround",
-        "price": 17.99,
+        "price": 18.99,
         "image": { "fields": { "file": { "url": "images/12ozJitteryGround.webp" } } }
       }
     },
@@ -28,7 +28,7 @@
       "sys": { "id": "4" },
       "fields": {
         "title": "12ozOGBean",
-        "price": 17.99,
+        "price": 18.99,
         "image": { "fields": { "file": { "url": "images/12ozOGBean.webp" } } }
       }
     },
@@ -36,7 +36,7 @@
       "sys": { "id": "5" },
       "fields": {
         "title": "12ozOGEspresso",
-        "price": 17.99,
+        "price": 18.99,
         "image": { "fields": { "file": { "url": "images/12ozOGEspresso.webp" } } }
       }
     },
@@ -44,7 +44,7 @@
       "sys": { "id": "6" },
       "fields": {
         "title": "12ozOGGround",
-        "price": 17.99,
+        "price": 18.99,
         "image": { "fields": { "file": { "url": "images/12ozOGGround.webp" } } }
       }
     }
