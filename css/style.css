@@ -24,6 +24,24 @@
 .cartInfo > * {
   margin-bottom: 1rem;
 }
+
+
+.header > * {
+  cursor: pointer;
+}
+.header__icon {
+  position: relative;
+}
+.header__icon--total {
+  border-radius: 30%;
+  font-size: 1.5rem;
+  position: absolute;
+  bottom: -25%;
+  right: -65%;
+}
+
+
+
 .item img {
   max-width: 15rem;
   width: 100%;

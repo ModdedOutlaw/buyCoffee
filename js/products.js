@@ -23,7 +23,7 @@ function displayData(data) {
               class="product-image"
           />
           </div>
-          <h5 class="product__1--price">$${item.fields.price} </h5>
+          <h5 class="product__1--price">${item.fields.price} $</h5>
           <button class="btn add-cart">Add product</button>
           </div>
       `;

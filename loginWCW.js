@@ -262,7 +262,7 @@ async function checkPriceofwax() {
     await fetchWaxPrice().then(price => {
 
         let current_price_of_wax = price.wax.usd;
-        let usd_price = 0.001;
+        let usd_price = 18.99;
         let current_price_of_coffee = (usd_price / current_price_of_wax).toFixed(8);
 
         total_sent = current_price_of_coffee;
