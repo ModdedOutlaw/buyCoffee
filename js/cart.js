@@ -84,6 +84,10 @@ function displayCartItems(currentCart) {
 
     console.log("TOTAL PRICE SESSION WAX = " + total_wax_session);
 
+    console.log('QUANTITY IN CART = ' + getLocalStorage('qtyCart'));
+
+    document.getElementById('cart_total').textContent = getLocalStorage('qtyCart');
+
 
 
 

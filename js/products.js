@@ -3,6 +3,7 @@ import { getLocalStorage, setLocalStorage } from './script.js';
 
 const iconQty = document.querySelector('.header__icon--total');
 const productContainer = document.querySelector('.products');
+
 let currentCart;
 
 // loop thorough data and display each field
