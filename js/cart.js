@@ -6,6 +6,10 @@ const currentCartItemsContainer = document.querySelector('.item');
 let totalPrice = document.querySelector('.totalPrice');
 let currentPrice = [];
 
+updateWaxPrice();
+
+
+
 function selectElementsForCart(card) {
   const image = card.querySelector('img').src;
   const id = card.id;
@@ -15,6 +19,8 @@ function selectElementsForCart(card) {
 }
 
 function displayCartItems(currentCart) {
+  
+  updateWaxPrice();
 
   currentCartItemsContainer.innerHTML = '';
 
@@ -65,11 +71,18 @@ function displayCartItems(currentCart) {
     .reduce((curr, acc) => curr + acc, 0)
     .toFixed(2);
 
-    let total_wax_session = currentPrice.reduce((curr, acc) => curr + acc, 0).toFixed(2) / sessionStorage.getItem('price_wax');
+     console.log(currentPrice.reduce((curr, acc) => curr + acc, 0).toFixed(2));
+
+
+    console.log(sessionStorage.getItem('wax_price'));
+
+    let total_wax_session = currentPrice.reduce((curr, acc) => curr + acc, 0).toFixed(2) / sessionStorage.getItem('wax_price');
 
     console.log("TOTAL PRICE SESSION $$$$ = " + totalPrice.innerText);
 
-    console.log("TOTAL PRICE SESSION WAX = " + total_wax_session.toFixed(8).toString());
+    document.getElementById('total_wax_order').textContent = '$'+totalPrice.innerText+ ' = '+total_wax_session.toFixed(8).toString() +' wax';
+
+    console.log("TOTAL PRICE SESSION WAX = " + total_wax_session);
 
 
 
@@ -104,6 +117,37 @@ console.log("TOTAL 12ozOGGround = " + sessionStorage
 
   loadCartListeners();
 }
+
+
+async function fetchUpdateWaxPrice() {
+
+  const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=wax&vs_currencies=usd');
+
+  const wax_price = await response.json();
+
+  return wax_price;
+
+}
+
+
+async function updateWaxPrice() {
+
+
+  await fetchUpdateWaxPrice().then(price => {
+
+
+
+      //localStorage.setItem('price_wax',price.wax.usd);
+      sessionStorage.setItem('wax_price',price.wax.usd);
+
+  });
+
+}
+
+
+
+
+
 
 function loadCartListeners() {
   const deleteBtn = document.querySelectorAll('.deleteBtn');

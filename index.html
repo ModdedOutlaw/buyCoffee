@@ -113,7 +113,7 @@
         <div class="allProductsApp">
             <header class="header">
                 <div class="header__icon">
-                    Checkout 🛒 <span class="header__icon--total">0</span>
+                    Checkout 🛒 <span class="header__icon--total" id="total_wax_order">0</span>
                 </div>
             </header>
 
@@ -137,12 +137,12 @@
 
                     <div class="pay-wax" id="pay">
 
-                        <!-- <input value="Purchase coffee" class="CustomButton w-145 btn btn-primary" id="sign" onclick=buyCoffee()> -->
+                       
 
                         <button type="submit" class="CustomButton w-145 btn btn-primary" id="sign"
                             onclick=buyCoffee()>Purchase
                             Coffee</button>
-                        <!-- <pre><code id="response">Transaction Response </code></pre>-->
+          
 
                     </div>
                     <div class="d-flex flex-md-nowrap flex-wrap justify-content-center">
@@ -280,7 +280,7 @@
                                                     sessionStorage.getItem('price_wax'));
 
 
-                                                    sessionStorage.clear();
+                                                    //sessionStorage.clear();
 
 
 
