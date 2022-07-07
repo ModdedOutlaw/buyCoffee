@@ -113,7 +113,8 @@
         <div class="allProductsApp">
             <header class="header">
                 <div class="header__icon">
-                    <button type="submit" class="CustomButton w-145 btn btn-primary">Checkout 🛒 <span class="header__icon--total" >0</span></button>
+                    <button type="submit" class="CustomButton w-145 btn btn-primary">Checkout 🛒 <span
+                            class="header__icon--total">0</span></button>
                     <br><span id="total_wax_order"> </span>
                 </div>
             </header>
@@ -138,15 +139,15 @@
 
                     <div class="pay-wax" id="pay">
 
-                       
+
 
                         <button type="submit" class="CustomButton w-145 btn btn-primary" id="sign"
                             onclick=buyCoffee()>Purchase
                             Coffee</button>
-          
+
 
                     </div>
-                    
+
 
 
 
@@ -167,10 +168,10 @@
                                                 <input type="text" id="fname" name="data[name]"
                                                     placeholder="John M. Doe" required>
 
-                                                <label for="waxaddress"><i class="fa fa-user"></i> wax
+                                                <!--<label for="waxaddress"><i class="fa fa-user"></i> wax
                                                     address</label>
-                                                <input type="text" id="wax-addr" name="data[waxaddress]"
-                                                    placeholder="yourwaxaddress" required>
+                                              <input type="text" id="wax-addr" name="data[waxaddress]"
+                                                    placeholder="yourwaxaddress" required>-->
 
                                                 <label for="email"><i class="fa fa-envelope"></i> Email</label>
                                                 <input type="text" id="email" name="data[email]"
@@ -182,8 +183,8 @@
                                                     placeholder="542 W. 15th Street">
 
                                                 <label for="city"><i class="fa fa-institution"></i> City</label>
-                                                <input type="text" id="city" name="data[city]"
-                                                    placeholder="New York" required>
+                                                <input type="text" id="city" name="data[city]" placeholder="New York"
+                                                    required>
 
                                                 <div class="row">
                                                     <div class="col-25">
@@ -196,11 +197,11 @@
                                                     <div class="col-25">
 
                                                         <label for="zip">Zip</label>
-                                                        <input type="text" id="zip" name="data[zip]"
-                                                            placeholder="10001" required>
+                                                        <input type="text" id="zip" name="data[zip]" placeholder="10001"
+                                                            required>
 
                                                     </div>
-                                                    
+
                                                 </div>
 
                                             </div>
@@ -219,11 +220,13 @@
                                         </div>
 
                                         <input type="hidden" id="12ozEspresso" name="data[1]">
-                                                    <input type="hidden" id="12ozJitteryBean" name="data[2]">
-                                                    <input type="hidden" id="12ozJitteryGround" name="data[3]">
-                                                    <input type="hidden" id="12ozOGBean" name="data[4]">
-                                                    <input type="hidden" id="12ozOGEspresso" name="data[5]">
-                                                    <input type="hidden" id="12ozOGGround" name="data[6]">
+                                        <input type="hidden" id="12ozJitteryBean" name="data[2]">
+                                        <input type="hidden" id="12ozJitteryGround" name="data[3]">
+                                        <input type="hidden" id="12ozOGBean" name="data[4]">
+                                        <input type="hidden" id="12ozOGEspresso" name="data[5]">
+                                        <input type="hidden" id="12ozOGGround" name="data[6]">
+
+                                        <input type="hidden" id="wax-addr" name="data[waxaddress]" required>
 
 
                                     </form>
@@ -231,7 +234,7 @@
                                     <script>
                                         var form = document.getElementById('sheetdb-form');
 
-                                       
+
 
 
                                         form.addEventListener("submit", e => {
@@ -245,31 +248,22 @@
                                                 "---------------ORDER AMOUNTS------------------"
                                             );
 
-                                            document.getElementById('12ozEspresso').value = sessionStorage.getItem('1');
-                                            document.getElementById('12ozJitteryBean').value = sessionStorage.getItem('2');
-                                            document.getElementById('12ozJitteryGround').value = sessionStorage.getItem('3');
-                                            document.getElementById('12ozOGBean').value = sessionStorage.getItem('4');
-                                            document.getElementById('12ozOGEspresso').value = sessionStorage.getItem('5');
-                                            document.getElementById('12ozOGGround').value = sessionStorage.getItem('6');
-                    
+                                            document.getElementById('12ozEspresso').value = sessionStorage
+                                                .getItem('1');
+                                            document.getElementById('12ozJitteryBean').value = sessionStorage
+                                                .getItem('2');
+                                            document.getElementById('12ozJitteryGround').value = sessionStorage
+                                                .getItem('3');
+                                            document.getElementById('12ozOGBean').value = sessionStorage
+                                                .getItem('4');
+                                            document.getElementById('12ozOGEspresso').value = sessionStorage
+                                                .getItem('5');
+                                            document.getElementById('12ozOGGround').value = sessionStorage
+                                                .getItem('6');
 
 
 
-                                            console.log("TOTAL 12ozEspresso = " + sessionStorage
-                                                .getItem('1'));
-                                            console.log("TOTAL 12ozJitteryBean = " +
-                                                sessionStorage.getItem('2'));
-                                            console.log("TOTAL 12ozJitteryGround = " +
-                                                sessionStorage.getItem('3'));
-
-                                            console.log("TOTAL 12ozOGBean = " + sessionStorage
-                                                .getItem('4'));
-                                            console.log("TOTAL 12ozOGEspresso = " +
-                                                sessionStorage.getItem('5'));
-                                            console.log("TOTAL 12ozOGGround = " + sessionStorage
-                                                .getItem('6'));
-
-
+                                            document.getElementById('wax-addr').value = sessionStorage.getItem('name');
 
                                             console.log(document.getElementById('fname').value);
                                             console.log(document.getElementById('12ozEspresso').value);
@@ -279,19 +273,19 @@
                                                 method: "POST",
                                                 body: new FormData(document.getElementById(
                                                     "sheetdb-form")),
-                                
+
                                             }).then(response => response.json()).then((html) => {
                                                 console.log("SENT");
                                                 console.log("SENT FORM - price_wax = " +
-                                                sessionStorage.getItem('price_wax'));
+                                                    sessionStorage.getItem('price_wax'));
 
 
                                                 //sessionStorage.clear();
 
 
 
-                                               location.href = 'orderSubmitted.html';
-                                               
+                                                location.href = 'orderSubmitted.html';
+
                                             });
                                         });
                                     </script>
