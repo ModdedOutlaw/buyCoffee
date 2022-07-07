@@ -33,6 +33,7 @@
   position: relative;
 }
 .header__icon--total {
+  font-weight: bold;
 
 }
 
