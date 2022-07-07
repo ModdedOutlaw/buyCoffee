@@ -138,7 +138,7 @@ async function transferWaxWCW() {
                 document.getElementById("pay").style.display = "none";
                 document.getElementById("ship").style.display = "block";
                 document.getElementById("shipping-form").style.display = "block";
-                document.getElementsByClassName('shopping-cart')[0].style.display = "none";
+                  document.getElementsByClassName('shopping-cart')[0].style.display = "none";
 
 
             }
@@ -282,9 +282,9 @@ async function checkPriceofwax() {
 
         console.log(current_price_of_coffee);
 
-        //document.getElementById('wax-price').textContent = current_price_of_wax;
-       // document.getElementById('dollar-cost').textContent = usd_price;
-        //document.getElementById('wax-cost').textContent = current_price_of_coffee;
+        document.getElementById('wax-price').textContent = current_price_of_wax;
+        document.getElementById('dollar-cost').textContent = usd_price;
+        document.getElementById('wax-cost').textContent = current_price_of_coffee;
 
         return current_price_of_coffee;
     });
